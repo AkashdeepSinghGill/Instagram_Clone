@@ -1,0 +1,65 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram Clone</title>
+
+     <style>
+    body {
+      text-align: left;
+      background: url("http://4827-presscdn.pagely.netdna-cdn.com/wp-content/uploads/2016/07/instagram_gradient_wallpaper_iPad.jpg");
+      background-size: cover;
+      background-position: center;
+      color:white;
+
+    }
+
+    div {
+    font-size:34px;
+
+    }
+    a{
+        color:black;
+    }
+    </style>
+</head>
+<body>
+	<div class="main">
+            <h1> Instagram Clone</h1>
+            <h3>Sign Up</h3>
+             <h4>{{ today }}</h4>
+    </div>
+
+    <div>
+        <form method="post">
+             {% csrf_token %}
+            <div>
+                <label for="username">Username: </label>
+                <input id="username" type="text" name="username" value={{ username }}>
+            </div>
+
+            <div>
+                <label for="name">Name  :  </label>
+                <input id="name" type="text" name="name" value={{ name }}>
+            </div>
+
+            <div>
+                <label for="email">Email  :  </label>
+                <input id="email" type="text" name="email" value={{ email }}>
+            </div>
+
+            <div>
+                <label for="password">Password: </label>
+                <input id="password" type="password" name="password" value={{ password }}>
+            </div>
+                <input type="submit" value="Sign Up">
+        </form>
+
+
+    </div><br><br>
+
+    <div><h3>Already a user?</h3><a href="login/">Login</a> </div>
+</body>
+</html>

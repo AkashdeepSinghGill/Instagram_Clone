@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+text-align:center;
+background-image: url("https://wallpaperscraft.com/image/blue_stripes_vertical_dark_9668_1920x1080.jpg");
+background-size:cover;
+}
+input[type="submit"] {
+      background: #0D87A5;
+      color: white;
+    }
+ input {
+       padding: 10px;
+      font-size: 17px;
+border: 1px solid blue;
+background-color:rgba(255,255,255,0.4);
+
+}
+
+.appu{
+    width: 350px;
+    height: 100px;
+margin:60px 200px 30px 40px;
+    padding: 30px;
+    border: 1px solid orange;
+background-color:rgba(255,255,255,0.4);
+}
+h1 {color: #0F9C26
+}
+span{
+color: #EE1010
+}
+h1 {
+    text-align: center;
+    font-family: "Comic Sana MS" , cursive, sans-serif;
+}
+
+</style>
+</head>
+<body>
+ <header>
+
+     <h1><marquee><span> CREATE </span> POSTS </marquee></h1>
+            </header>
+<div class = "appu"><br>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <input type="file" name="image" accept="image">
+  <input id="caption" type="text" name="caption" placeholder="caption" value={{ Caption }}>
+    <input type="submit"value="post">
+
+</form>
+</div><br>
+
+
+</body>
+</html>
