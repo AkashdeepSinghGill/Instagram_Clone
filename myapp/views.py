@@ -147,3 +147,10 @@ def check_validation(request):
                 return session.user
     else:
         return None
+
+
+def logout_view(request):
+    request.session.modified = True
+    response = redirect("/login/")
+    response.delete_cookie(key="session_token")
+    return response

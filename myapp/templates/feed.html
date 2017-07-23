@@ -7,13 +7,27 @@
     <title>Title</title>
 </head>
 <body>
+    <center>
+    <form methot = "get" action = "{% url 'logout' %}">
+    <button type ="submit"  style="float: right;
+     color:white;
+     background-color: red;
+     padding: 10px 30px;
+     font-size: 16px; ">
+        Logout
+    </button>
+
+</form>
+
+
+    {% for post in posts %}
     <form method="post" action="/post/">
         {% csrf_token %}
         <input type="submit" class="btn-default btn" value="Create Post">
     </form>
 
 
-    {% for post in posts %}
+    {/% for post in posts %}
 
 
         <h3> Posted by: {{ post.user.username }} </h3>
@@ -53,5 +67,6 @@
         </div>
 
     {% endfor %}
+</center>
 </body>
 </html>
