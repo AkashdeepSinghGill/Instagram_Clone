@@ -6,7 +6,7 @@
 from django.db import models
 import uuid
 
-
+# Model to fetch the details from a new user and get them entered into database
 class UserModel(models.Model):
     email = models.EmailField(default='default@email.com')
     name = models.CharField(max_length=120)
@@ -15,7 +15,7 @@ class UserModel(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
-
+# Model to save the session related details in the database.
 class SessionToken(models.Model):
     user = models.ForeignKey(UserModel)
     session_token = models.CharField(max_length=255)
@@ -26,7 +26,7 @@ class SessionToken(models.Model):
     def create_token(self):
         self.session_token = uuid.uuid4()
 
-
+# Model to save the post related details in the database
 class PostModel(models.Model):
     user = models.ForeignKey(UserModel)
     image = models.FileField(upload_to='user_images')
@@ -45,13 +45,14 @@ class PostModel(models.Model):
     def comments(self):
         return CommentModel.objects.filter(post=self).order_by('-created_on')
 
+#Model to store details of a like
 class LikeModel(models.Model):
     user = models.ForeignKey(UserModel)
     post = models.ForeignKey(PostModel)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
-
+# Model to store details related to a comment.
 class CommentModel(models.Model):
     user = models.ForeignKey(UserModel)
     post = models.ForeignKey(PostModel)
