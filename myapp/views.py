@@ -35,7 +35,7 @@ def signup_view(request):
             user.save()
 
             sg = sendgrid.SendGridAPIClient(apikey=(sendgrid_key))
-            from_email = Email("alamdeep.1@gmail.com")
+            from_email = Email("asgill0202@gmail.com")
             to_email = Email(form.cleaned_data['email'])
             subject = "Welcome to Insta_clone"
             content = Content("text/plain",
